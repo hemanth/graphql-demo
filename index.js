@@ -4,7 +4,6 @@ const {graphqlExpress, graphiqlExpress} = require('apollo-server-express')
 const schema = require('./schema')
 const {readFileSync} = require('fs')
 const marked = require('marked')
-
 const app = express()
 
 app.use('/graphql', bodyParser.json(), graphqlExpress({schema}))

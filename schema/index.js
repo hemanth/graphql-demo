@@ -7,12 +7,20 @@ const typeDefs = `
     id: ID!
     title: String!
     author: String!
-    isbn: String!
-    url: String!
+    isbn: String
+    url: String
   }
 
   type Query {
-    allBooks: [Book!]!
+    allBooks(filter: bookFilter): [Book!]!
+  }
+
+  input bookFilter {
+    id: ID
+    title: String
+    author: String
+    isbn: String
+    url: String
   }
 
   type Mutation {
