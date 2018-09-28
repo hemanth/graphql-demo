@@ -1,23 +1,9 @@
-const express = require('express')
-const bodyParser = require('body-parser')
-const {graphqlExpress, graphiqlExpress} = require('apollo-server-express')
-const schema = require('./schema')
-const {readFileSync} = require('fs')
-const marked = require('marked')
-const app = express()
+const { ApolloServer } = require("apollo-server");
+const typeDefs = require("./schema/typedefs");
+const resolvers = require("./schema/resolvers");
 
-app.use('/graphql', bodyParser.json(), graphqlExpress({schema}))
+const server = new ApolloServer({ typeDefs, resolvers });
 
-app.use('/graphiql', graphiqlExpress({
-  endpointURL: '/graphql'
-}))
-
-app.use('/', (req, res) => {
-  res.type('html')
-  res.end(marked(readFileSync('./README.md', 'utf-8')))
-})
-
-const PORT = 3000
-app.listen(PORT, () => {
-  console.log(`Books are on ${PORT}.`)
-})
+server.listen().then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});
