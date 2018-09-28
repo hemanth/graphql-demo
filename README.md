@@ -43,5 +43,6 @@ query{
 }
 ```
 
-Try the [endPoint](https://graphql-demo.now.sh/graphiql).
+Try the [endPoint](https://graphql-demo.now.sh/).
 
+P.S: If you looking for older version, you can find it here -> [v1](https://github.com/hemanth/graphql-demo/tree/v1)
